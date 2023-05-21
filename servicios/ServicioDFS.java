@@ -18,6 +18,7 @@ public class ServicioDFS {
 		this.visitedOrder = new MyQueue<>();
 	}
 	
+
 	public List<Integer> dfsForest() {
 		Iterator<Integer> it = this.grafo.obtenerVertices();
 		ArrayList<Integer> dev;
@@ -26,14 +27,13 @@ public class ServicioDFS {
 		while(it.hasNext()){
 			verticeActual = it.next();
 
-			if(!visited.contains(verticeActual))
-				this.dfsForestAux(verticeActual);
+			if(!visited.contains(verticeActual))		
+				this.dfsForestAux(verticeActual);			
 		}
 		this.visited.clear();						// Se eliminan por si en un futuro se vuelve a invocar al metodo
 		
 
-		dev = this.visitedOrder.getValues();
-		this.visitedOrder.clear();			// Se eliminan por si en un futuro se vuelve a invocar al metodo
+		dev = this.visitedOrder.getValues();	
 		
 		return dev;
 	}

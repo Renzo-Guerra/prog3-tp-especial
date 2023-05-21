@@ -27,7 +27,8 @@ public class ServicioCaminos {
 	}
 
 	/**
-	 * Evalua y devuelve todos los posibles caminos que se pueden tomar desde origen a destino sin superar un limite establecido.
+	 * Evalua y devuelve todos los posibles caminos que se pueden tomar desde origen 
+	 * a destino sin superar un limite establecido.
 	 * 	
 	 * @return
 	 */
@@ -66,20 +67,22 @@ public class ServicioCaminos {
 			verticeAdyacente = itAdyacentes.next();
 			ultimoTrecho = this.grafo.obtenerArco(verticeActual, verticeAdyacente);
 			
-			if(!visitados.contains(ultimoTrecho)){
-				visitados.add(ultimoTrecho);
+			if(!visitados.contains(ultimoTrecho)){		
+				visitados.add(ultimoTrecho);						
 				this.caminosAux(verticeAdyacente, posibleCamino, visitados);
-				visitados.remove(ultimoTrecho);
+				visitados.remove(ultimoTrecho);					
 			}
 		}
 
 		posibleCamino.pop();
 	}
 
+	
 	private boolean sePuedePodar(MyList<Integer> posibleCamino){
 		return ((posibleCamino.getSize()-1) >= this.lim);
 	}
-
+	
+	
 	private boolean caminoImposible(){
 		return ((!this.grafo.contieneVertice(origen)) || (!this.grafo.contieneVertice(destino)) || (this.lim < 0));
 	}

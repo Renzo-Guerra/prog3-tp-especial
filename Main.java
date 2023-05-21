@@ -39,11 +39,11 @@ public class Main {
     }
     System.out.print("]\n");
     
-    testearDFS(grafo); 
+    testearDFS(grafo);
     testearBFS(grafo);
     
     //! IMPORTANTE: 
-    //! - Una coma indica un caminos, ej: [1, 2, 5, 9] significa que hubo 3 caminos tomados
+    //! - Una coma indica un trayecto, ej: [1, 2, 5, 9] significa que hubo 3 caminos tomados
     //! - Si "origen" y "destino" son los dos por ej 1, esta bien que [1] sea una solucion valida,
     //!   quiere decir que desde el origen 1 no se necesita cruzar ni 1 solo camino para llegar a "destino".  
     probandoServicioCaminos();

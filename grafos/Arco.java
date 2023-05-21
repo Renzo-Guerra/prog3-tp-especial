@@ -15,19 +15,37 @@ public class Arco<T> {
 		this.verticeDestino = verticeDestino;
 		this.etiqueta = etiqueta;
 	}
-	
+
+	/**
+	 * Complejidad: O(1)
+	 * 
+	 * @return (int) value del verticeOrigen
+	 */
 	public int getVerticeOrigen() {
 		return verticeOrigen;
 	}
 	
+	/**
+	 * Complejidad: O(1)
+	 * 
+	 * @return (int) value del verticeDestino
+	 */
 	public int getVerticeDestino() {
 		return verticeDestino;
 	}
 
+	/**
+	 * Complejidad: O(1)
+	 * 
+	 * @return (T) devuelve la etiqueta
+	 */
 	public T getEtiqueta() {
 		return etiqueta;
 	}
 
+	/**
+	 * Complejidad: O(1)
+	 */
 	@Override
 	public String toString() {
 		return "{v_origen: " + getVerticeOrigen() + 

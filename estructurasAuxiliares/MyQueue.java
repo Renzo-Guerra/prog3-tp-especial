@@ -8,15 +8,23 @@ public class MyQueue<T> implements Iterable<T>{
   private NodoDoble<T> last;
   private int size;
 
+  /**
+   * Complejidad: O(1)
+   */
   public MyQueue(){
     this.clear();
   }
 
+  /**
+   * Complejidad: O(1)
+   */
   public boolean isEmpty(){
     return (this.size == 0);
   }
 
   /**
+   * Complejidad: O(1)
+   * 
    * Agrega un nuevo elemento al final de la lista
    * @param nuevoElem (T) elemento a agregar
    */
@@ -36,6 +44,8 @@ public class MyQueue<T> implements Iterable<T>{
 
 
   /**
+   * Complejidad: O(1)
+   * 
    * Elimina y retorna el primer elemento de la lista
    * @return (T) primer elemento de la lista
    */
@@ -56,12 +66,17 @@ public class MyQueue<T> implements Iterable<T>{
     return aux;
   }
 
+  /**
+   * Complejidad: O(1)
+   */
   @Override
   public Iterator<T> iterator() {
     return new IteratorFila<>(this.first);
   }
 
   /**
+   * Complejidad: O(n) donde n es la cantidad de elementos de la fila.
+   * 
    * Permite obtener un arraylist de los elementos de la fila, 
    * donde el primer elemento es el primero en haber sido ingresado, y el ultimo es el ultimo ingresado.
    * A su vez, vacia la fila para no romper encapsulamiento.
@@ -79,11 +94,18 @@ public class MyQueue<T> implements Iterable<T>{
 
     return dev;
   }
-
+  /**
+   * Complejidad: O(1)
+   *
+   * @return (int) cantidad de elementos en la fila 
+   */
   public int getSize(){
     return this.size;
   }
 
+  /**
+   * Complejidad: O(1)
+   */
   public void clear(){
     this.first = null;
     this.last = null;

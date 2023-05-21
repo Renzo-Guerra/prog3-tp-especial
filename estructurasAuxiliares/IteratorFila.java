@@ -10,11 +10,18 @@ public class IteratorFila<T> implements Iterator<T>{
   public IteratorFila(NodoDoble<T> first){
     this.nodo = first;
   }
+
+  /**
+   * Complejidad: O(1)
+   */
   @Override
   public boolean hasNext() {
     return this.nodo != null;
   }
 
+  /**
+   * Complejidad: O(1)
+   */
   @Override
   public T next() {
     T aux = this.nodo.getValue();

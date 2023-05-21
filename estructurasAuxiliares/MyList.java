@@ -2,7 +2,12 @@ package estructurasAuxiliares;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * NOTA:
+ * La estructura se asemeja mucho a una pila, lo que cambia es que 
+ * el metodo getValues() devuelve un ArrayList pero 
+ * este "desapilamiento" lo hace inverso (va agregando del fondo al exterior)
+ */
 public class MyList<T> implements Iterable<T>{
   private NodoDoble<T> first;
   private NodoDoble<T> last;
@@ -14,26 +19,17 @@ public class MyList<T> implements Iterable<T>{
     this.size = 0;
   }
 
-  public MyList(Iterable<T> lista){
-    this();
-    this.push(lista);
-  }
-
+  /**
+   * Complejidad: O(1)
+   * @return (boolean) 
+   */
   public boolean isEmpty(){
     return this.size == 0;
   }
 
   /**
-   * Permite ver el valor del proximo elemento en deQueue
-   * @return (T) valor del dequeue sin eliminarlo de la fila
-   */
-  public T viewFirst(){
-    if(this.isEmpty()){return null;}
-
-    return this.first.getValue();
-  }
-
-  /**
+   * Complejidad: O(1)
+   * 
    * Permite ver el valor del proximo elemento en deQueue
    * @return (T) valor del dequeue sin eliminarlo de la fila
    */
@@ -44,6 +40,8 @@ public class MyList<T> implements Iterable<T>{
   }
 
   /**
+   * Complejidad: O(1)
+   * 
    * Agrega un nuevo elemento al final de la lista
    * @param nuevoElem (T) elemento a agregar
    */
@@ -61,32 +59,9 @@ public class MyList<T> implements Iterable<T>{
     size++;
   }
 
-  public void push(Iterable<T> nuevosElementos){
-    Iterator<T> it = nuevosElementos.iterator();
-    while(it.hasNext()){
-      this.push(it.next());
-    }
-  }
-
-    /**
-   * Agrega un nuevo elemento al inicio de la lista
-   * @param nuevoElem (T) elemento a agregar al inicio de la lista
-   */
-  public void unshift(T nuevoElem){
-    NodoDoble<T> aux = new NodoDoble<T>(nuevoElem);
-    
-    if(this.isEmpty()){
-      this.first = aux;
-      this.last = aux;
-    }else{
-      aux.setNext(this.first);
-      this.first.setPrev(aux);
-      this.first = aux;
-    }
-    size++;
-  }
-
   /**
+   * Complejidad: O(1)
+   * 
    * Elimina y retorna el ultimo elemento de la lista
    * @return (T) ultimo elemento de la lista
    */
@@ -108,48 +83,21 @@ public class MyList<T> implements Iterable<T>{
   }
 
   /**
-   * Elimina y retorna el primer elemento de la lista
-   * @return (T) primer elemento de la lista
+   * Complejidad: O(1)
    */
-  public T shift(){
-    if(this.isEmpty()){return null;}
-
-    T aux = this.first.getValue();
-    if(this.size == 1){
-      this.first = null;
-      this.last = null;
-    }else{
-      this.first = this.first.getNext();
-      this.first.setNext(null);
-    }
-
-    size--;
-
-    return aux;
-  }
-
-  public boolean contains(T element){
-    Iterator<T> it = this.iterator();
-
-    while(it.hasNext()){
-      if(it.next() == element){
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   @Override
   public Iterator<T> iterator() {
     return new IteratorMyLista<>(this.first);
   }
 
   /**
+   * Complejidad: O(n) donde n es la cantidad de elementos de la lista, esto es porque cada elemento 
+   * de la lista es agregado al ArrayList que se va a devolver.
+   * 
    * Permite obtener un arraylist de los elementos de la fila, 
    * donde el primer elemento es el primero en haber sido ingresado, y el ultimo es el ultimo ingresado.
    * 
-   * @return ArrayList<T> values de la pila
+   * @return ArrayList<T> values de la lista
    */
   public ArrayList<T> getValues(){
     ArrayList<T> dev = new ArrayList<>();
@@ -162,10 +110,18 @@ public class MyList<T> implements Iterable<T>{
     return dev;
   }
 
+  /**
+   * Complejidad: O(1)
+   * 
+   * @return (int) cantidad de elementos presentes en la lista
+   */
   public int getSize(){
     return this.size;
   }
 
+  /**
+   * Complejidad: O(1)
+   */
   public void clear(){
     this.first = null;
     this.last = null;
