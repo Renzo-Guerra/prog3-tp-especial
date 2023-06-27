@@ -32,7 +32,6 @@ public class ServicioDFS {
 		}
 		this.visited.clear();						// Se eliminan por si en un futuro se vuelve a invocar al metodo
 		
-
 		dev = this.visitedOrder.getValues();	
 		
 		return dev;
@@ -44,12 +43,15 @@ public class ServicioDFS {
 		
 		this.visited.add(verticeActual);
 		this.visitedOrder.enQueue(verticeActual);
+		
+		// Ahora se debe comprobar si lo que devuelve el metodo "obtenerAdyacentes()" del grafo no devuelve un null.
+		if(itAdy != null){		
+			while(itAdy.hasNext()){
+				adyacenteActual = itAdy.next();
 
-		while(itAdy.hasNext()){
-			adyacenteActual = itAdy.next();
-
-			if(!visited.contains(adyacenteActual))
-				this.dfsForestAux(adyacenteActual);
+				if(!visited.contains(adyacenteActual))
+					this.dfsForestAux(adyacenteActual);
+			}
 		}
 	}
 

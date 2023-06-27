@@ -63,14 +63,17 @@ public class ServicioCaminos {
 			this.caminosValidos.enQueue(new ArrayList<>(posibleCamino.getValues()));
 		}
 
-		while((itAdyacentes.hasNext()) && (!this.sePuedePodar(posibleCamino))){
-			verticeAdyacente = itAdyacentes.next();
-			ultimoTrecho = this.grafo.obtenerArco(verticeActual, verticeAdyacente);
-			
-			if(!visitados.contains(ultimoTrecho)){		
-				visitados.add(ultimoTrecho);						
-				this.caminosAux(verticeAdyacente, posibleCamino, visitados);
-				visitados.remove(ultimoTrecho);					
+		// Ahora se debe comprobar si lo que devuelve el metodo "obtenerAdyacentes()" del grafo no devuelve un null.
+		if(itAdyacentes != null){
+			while((itAdyacentes.hasNext()) && (!this.sePuedePodar(posibleCamino))){
+				verticeAdyacente = itAdyacentes.next();
+				ultimoTrecho = this.grafo.obtenerArco(verticeActual, verticeAdyacente);
+				
+				if(!visitados.contains(ultimoTrecho)){		
+					visitados.add(ultimoTrecho);						
+					this.caminosAux(verticeAdyacente, posibleCamino, visitados);
+					visitados.remove(ultimoTrecho);					
+				}
 			}
 		}
 

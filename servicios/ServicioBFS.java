@@ -46,12 +46,16 @@ public class ServicioBFS {
 			elementoActual = fila.deQueue();
 			
 			itAdyacentes = this.grafo.obtenerAdyacentes(elementoActual);
-			while(itAdyacentes.hasNext()){
-				adyacenteActual = itAdyacentes.next();
-				if(!visitados.contains(adyacenteActual)){
-					visitados.add(adyacenteActual);
-					fila.enQueue(adyacenteActual);
-				}	
+			
+			// Ahora se debe comprobar si lo que devuelve el metodo "obtenerAdyacentes()" del grafo no devuelve un null.
+			if(itAdyacentes != null){	
+				while(itAdyacentes.hasNext()){
+					adyacenteActual = itAdyacentes.next();
+					if(!visitados.contains(adyacenteActual)){
+						visitados.add(adyacenteActual);
+						fila.enQueue(adyacenteActual);
+					}	
+				}
 			}
 
 			this.terminados.enQueue(elementoActual);
